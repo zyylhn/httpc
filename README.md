@@ -1,6 +1,4 @@
-该项目改自https://github.com/go-resty/resty
-
-与公司内部shttp兼容request和response基本兼容，client的使用方式并不兼容，但是会尽可能提供出来相关构造函数创建出和shttp功能相同的client
+该项目改自https://github.com/go-resty/resty，在此基础上新增了一些其他功能
 
 ### Client
 
