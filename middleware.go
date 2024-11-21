@@ -102,7 +102,7 @@ func parseRequestURL(c *Client, r *Request) error {
 func parseLocalAddr(c *Client, r *Request) error {
 	if c.GetLocalAddrSelf || r.GetLocalAddrSelf {
 		//先根据目标匹配出目标的ip或者域名
-		targetIp, err := getLocalAddr.DNSResolutionFromUrl(r.URL)
+		targetIp, err := getlocaladdr.DNSResolutionFromUrl(r.URL)
 		if err != nil {
 			return err
 		}
@@ -112,7 +112,7 @@ func parseLocalAddr(c *Client, r *Request) error {
 		}
 		if localIp == nil {
 			for i := 0; i < 3; i++ {
-				localIpStr := getLocalAddr.GetLocalIPWithTargetIP(targetIp.String())
+				localIpStr := getlocaladdr.GetLocalIPWithTargetIP(targetIp.String())
 				localIp = net.ParseIP(localIpStr)
 				if localIp == nil {
 					time.Sleep(time.Millisecond * 10)
@@ -126,7 +126,7 @@ func parseLocalAddr(c *Client, r *Request) error {
 			return fmt.Errorf("get local IP error")
 		}
 		c.usingPortLock.Lock()
-		port := getLocalAddr.GetFreePortMap(c.usingPort)
+		port := getlocaladdr.GetFreePortMap(c.usingPort)
 		c.usingPort[port] = struct{}{}
 		c.usingPortLock.Unlock()
 		r.LocalAddr = &net.TCPAddr{

@@ -893,8 +893,8 @@ func (r *Request) ConnectInfo() ConnectInfo {
 		ci.LocalAddr = ct.gotConnInfo.Conn.LocalAddr()
 	} else if r.LocalAddr != nil {
 		ci.LocalAddr = r.LocalAddr
-		remoteIP, _ := getLocalAddr.DNSResolutionFromUrl(r.URL)
-		remotePort, _ := getLocalAddr.ExtractPortFromURL(r.URL)
+		remoteIP, _ := getlocaladdr.DNSResolutionFromUrl(r.URL)
+		remotePort, _ := getlocaladdr.ExtractPortFromURL(r.URL)
 		ci.RemoteAddr = &net.TCPAddr{
 			IP:   remoteIP,
 			Port: remotePort,

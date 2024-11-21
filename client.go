@@ -1188,7 +1188,7 @@ func (c *Client) execute(req *Request) (*Response, error) {
 		//goto重试机制来避免端口被占用没发送出去数据包的情况
 		if err != nil && strings.Contains(err.Error(), "already in use") {
 			c.usingPortLock.Lock()
-			port := getLocalAddr.GetFreePortMap(c.usingPort)
+			port := getlocaladdr.GetFreePortMap(c.usingPort)
 			c.usingPort[port] = struct{}{}
 			c.usingPortLock.Unlock()
 			req.LocalAddr.(*net.TCPAddr).Port = port
